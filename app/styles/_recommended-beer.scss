@@ -1,7 +1,14 @@
-.recommended-beer {
+#recommended-beer {
   .name {
     font-size: 60px;
     font-weight: bold;
     line-height: 1.2;
+    display: inline-block;
+  }
+
+  @include respond-to($container-sm) {
+    .name {
+      font-size: 36px;
+    }
   }
 }

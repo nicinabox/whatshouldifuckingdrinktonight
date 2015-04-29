@@ -52,7 +52,7 @@ var RecommendedBeer = React.createClass({
 
   render: function() {
     return (
-      <div className="recommended-beer">
+      <div id="recommended-beer">
         <span className="name">{this.props.name}</span>
 
         <div className="row">

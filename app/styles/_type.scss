@@ -1,0 +1,5 @@
+@include respond-to($container-sm) {
+  h3 {
+    font-size: 18px;
+  }
+}
