@@ -9,13 +9,21 @@ var RecommendedBeer = React.createClass({
     };
   },
 
+  componentWillMount: function() {
+    this.fetchDetails(this.props.id);
+  },
+
   componentWillReceiveProps: function(nextProps) {
     this.setState({
       details: '',
       isLoading: true
     });
 
-    axios.get('/beers/' + nextProps.beer.id).then((resp) => {
+    this.fetchDetails(nextProps.id);
+  },
+
+  fetchDetails: function (id) {
+    axios.get('/beers/' + id).then((resp) => {
       this.setState({
         details: resp.data,
         isLoading: false
@@ -35,7 +43,7 @@ var RecommendedBeer = React.createClass({
   render: function() {
     return (
       <div className="recommended-beer">
-        <span className="name">{this.props.beer.name}</span>
+        <span className="name">{this.props.name}</span>
 
         <div className="row">
           <div className="col-sm-8 col-sm-offset-2">

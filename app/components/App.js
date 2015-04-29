@@ -72,7 +72,7 @@ var App = React.createClass({
             ) : (
               <div>
                 <h3>Why don't you try a fucking</h3>
-                <RecommendedBeer beer={this.state.selectedBeer} />
+                <RecommendedBeer {...this.state.selectedBeer} />
 
                 <button
                   style={styles.button}
