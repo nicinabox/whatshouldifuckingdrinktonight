@@ -74,12 +74,21 @@ var App = React.createClass({
                 <h3>Why don't you try a fucking</h3>
                 <RecommendedBeer {...this.state.selectedBeer} />
 
-                <button
-                  style={styles.button}
-                  className="btn btn-link btn-lg"
-                  onClick={this.handleNewRecommendation}>
-                  I don't fucking like this
-                </button>
+                <div className="row">
+                  <button
+                    style={styles.button}
+                    className="btn btn-link btn-lg text-danger"
+                    onClick={this.handleNewRecommendation}>
+                    I don't fucking like this
+                  </button>
+
+                  <button
+                    style={styles.button}
+                    className="btn btn-link btn-lg"
+                    onClick={this.handleNewRecommendation}>
+                    I already fucking had this
+                  </button>
+                </div>
               </div>
             )}
           </div>
