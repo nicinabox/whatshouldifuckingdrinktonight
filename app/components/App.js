@@ -10,7 +10,8 @@ var App = React.createClass({
       beers: [],
       sample: {},
       location: {},
-      isLoading: true
+      isLoading: true,
+      error: false
     };
   },
 
@@ -23,6 +24,12 @@ var App = React.createClass({
 
   componentDidMount: function() {
     this.getLocation()
+      .catch((err) => {
+        this.setState({
+          error: 'I need your fucking location to find local beer.',
+          isLoading: false
+        });
+      })
       .then((coords) => {
         return axios.get('/nearby', {
           params: {
@@ -33,6 +40,7 @@ var App = React.createClass({
       })
       .then((resp) => {
         this.setState({
+          error: false,
           location: resp.data
         });
         return resp.data;
@@ -52,6 +60,8 @@ var App = React.createClass({
     return new Promise(function (resolve, reject) {
       navigator.geolocation.getCurrentPosition(function (loc) {
         resolve(loc.coords);
+      }, function (err) {
+        reject(err);
       });
     });
   },
@@ -78,22 +88,28 @@ var App = React.createClass({
               <p>Loading some fucking data...</p>
             ) : (
               <div>
-                <h3>Why don't you try a fucking</h3>
-                <RecommendedBeer {...this.state.sample} />
+                {this.state.error ? (
+                  <p className="text-danger">{this.state.error}</p>
+                ) : (
+                  <div>
+                    <h3>Why don't you try a fucking</h3>
+                    <RecommendedBeer {...this.state.sample} />
 
-                <div className="row actions">
-                  <button
-                    className="btn btn-link btn-lg text-danger"
-                    onClick={this.handleNewRecommendation}>
-                    I don't fucking like this
-                  </button>
+                    <div className="row actions">
+                      <button
+                        className="btn btn-link btn-lg text-danger"
+                        onClick={this.handleNewRecommendation}>
+                        I don't fucking like this
+                      </button>
 
-                  <button
-                    className="btn btn-link btn-lg"
-                    onClick={this.handleNewRecommendation}>
-                    I already fucking had this
-                  </button>
-                </div>
+                      <button
+                        className="btn btn-link btn-lg"
+                        onClick={this.handleNewRecommendation}>
+                        I already fucking had this
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
