@@ -33,11 +33,21 @@ var RecommendedBeer = React.createClass({
 
   description: function () {
     var details = this.state.details;
-    if (details.city) {
-      return `It's a fucking ${details.style} from ${details.city}.`
-    } else {
-      return `It's a fucking ${details.style}.`
+    var sentence = "It's ";
+
+    if (details.style) {
+      sentence += ` a fucking ${details.style}`;
     }
+
+    if (details.city) {
+      sentence += ` from ${details.city}`
+    }
+
+    if (!details.style && !details.city) {
+      sentence = 'No fucking idea.';
+    };
+
+    return sentence;
   },
 
   render: function() {
@@ -48,7 +58,7 @@ var RecommendedBeer = React.createClass({
         <div className="row">
           <div className="col-sm-8 col-sm-offset-2">
             <p className="lead">
-              {this.state.isLoading ? 'Loading a fucking description' : (
+              {this.state.isLoading ? 'Hold on a fucking second...' : (
                 this.description()
               )}
             </p>
