@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "webpack -wd & node-sass --include-path node_modules app/styles -o build/ -w",
-    "dist": "NODE_ENV=production cp public/index.html dist/ && webpack -p && node-sass --include-path node_modules app/styles/*.scss -o dist"
+    "dist": "NODE_ENV=production webpack -p && scss-cli --include-path node_modules app/styles/*.scss -o dist && cp public/index.html dist/"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "babel-loader": "^5.0.0",
     "connect": "^3.3.5",
     "node-sass": "^2.1.1",
+    "scss-cli": "0.0.5",
     "serve-static": "^1.9.2",
     "webpack": "^1.8.10"
   },

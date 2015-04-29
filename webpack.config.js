@@ -22,7 +22,7 @@ var configs = {
 
   production: {
     output: {
-      filename: 'public/bundle.js'
+      filename: 'dist/bundle.js'
     }
   }
 };
