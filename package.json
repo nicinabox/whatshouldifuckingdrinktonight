@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "watch": "webpack -wd & node-sass --include-path node_modules app/styles -o build/ -w"
+    "watch": "webpack -wd & node-sass --include-path node_modules app/styles -o build/ -w",
+    "dist": "NODE_ENV=production cp public/index.html dist/ && webpack -p && node-sass --include-path node_modules app/styles/*.scss -o dist"
   },
   "author": "",
   "license": "ISC",
