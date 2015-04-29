@@ -14,6 +14,13 @@ var App = React.createClass({
     };
   },
 
+  componentWillMount: function() {
+    this.getRandomBeer = _.debounce(this.getRandomBeer, 200, {
+      leading: true,
+      trailing: false,
+    });
+  },
+
   componentDidMount: function() {
     this.getLocation()
       .then((coords) => {
