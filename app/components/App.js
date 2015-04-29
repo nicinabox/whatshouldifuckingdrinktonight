@@ -81,16 +81,14 @@ var App = React.createClass({
                 <h3>Why don't you try a fucking</h3>
                 <RecommendedBeer {...this.state.sample} />
 
-                <div className="row">
+                <div className="row actions">
                   <button
-                    style={styles.button}
                     className="btn btn-link btn-lg text-danger"
                     onClick={this.handleNewRecommendation}>
                     I don't fucking like this
                   </button>
 
                   <button
-                    style={styles.button}
                     className="btn btn-link btn-lg"
                     onClick={this.handleNewRecommendation}>
                     I already fucking had this
@@ -103,15 +101,11 @@ var App = React.createClass({
       </div>
     );
   }
-
 });
 
 var styles = {
   container: {
     marginTop: window.innerHeight * 0.2
-  },
-  button: {
-    marginTop: 30
   }
 };
 
