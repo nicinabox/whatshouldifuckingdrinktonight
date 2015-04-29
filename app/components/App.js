@@ -8,7 +8,7 @@ var App = React.createClass({
   getInitialState: function() {
     return {
       beers: [],
-      selectedBeer: {},
+      sample: {},
       location: {},
       isLoading: true
     };
@@ -34,7 +34,7 @@ var App = React.createClass({
         axios.get('/stores/' + store.slug).then((resp) => {
           this.setState({
             beers: resp.data,
-            selectedBeer: this.getRandomBeer(resp.data),
+            sample: this.getRandomBeer(resp.data),
             isLoading: false
           });
         });
@@ -58,7 +58,7 @@ var App = React.createClass({
     e.preventDefault();
 
     this.setState({
-      selectedBeer: this.getRandomBeer()
+      sample: this.getRandomBeer()
     });
   },
 
@@ -72,7 +72,7 @@ var App = React.createClass({
             ) : (
               <div>
                 <h3>Why don't you try a fucking</h3>
-                <RecommendedBeer {...this.state.selectedBeer} />
+                <RecommendedBeer {...this.state.sample} />
 
                 <div className="row">
                   <button
