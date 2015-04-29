@@ -1,6 +1,6 @@
 var React = require('react');
 var axios = require('axios');
-var lodash = require('lodash');
+var _ = require('lodash');
 
 var RecommendedBeer = require('./RecommendedBeer');
 
